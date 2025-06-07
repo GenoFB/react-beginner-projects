@@ -1,36 +1,8 @@
 import { useState } from 'react'
 import './App.css'
-
-const TURNS = {
-  X: 'x',
-  O: 'o'
-}
-
-const Square = ({ children, isSelected, updateBoard, index }) => {
-  const className = `square ${isSelected ? 'is-selected' : ''}`
-
-  const handleClick = () => {
-    updateBoard(index)
-  }
-
-  return (
-    <div onClick={handleClick} className={className}>
-      {children}
-    </div>
-  )
-}
-
-const WINNER_COMBOS = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
-]
-
+import confetti from "canvas-confetti"
+import { Square } from './components/Square.jsx'
+import { TURNS, WINNER_COMBOS } from './constants.js'
 
 function App() {
   const [board, setBoard] = useState(Array(9).fill(null))
@@ -75,6 +47,7 @@ function App() {
 
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
+      confetti()
       setWinner(newWinner)
     } else if (checkEndGame(newBoard)) {
       setWinner(false)
