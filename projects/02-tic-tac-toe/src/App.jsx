@@ -21,14 +21,14 @@ const Square = ({ children, isSelected, updateBoard, index }) => {
 }
 
 const WINNER_COMBOS = [
-  [0,1,2],
-  [3,4,5],
-  [6,7,8],
-  [0,3,6],
-  [1,4,7],
-  [2,5,8],
-  [0,4,8],
-  [2,4,6],
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
 ]
 
 
@@ -58,6 +58,11 @@ function App() {
     setWinner(null)
   }
 
+  const checkEndGame = (newBoard) => {
+    //revisamos si hay un empase, si no hay mas espacios vacios
+    return newBoard.every((square) => square !== null)
+  }
+
   const updateBoard = (index) => {
     if (board[index] || winner) return
 
@@ -71,6 +76,8 @@ function App() {
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
       setWinner(newWinner)
+    } else if (checkEndGame(newBoard)) {
+      setWinner(false)
     }
   }
 
@@ -99,29 +106,29 @@ function App() {
         <Square isSelected={turn === TURNS.O}>{TURNS.O}</Square>
       </section>
 
-        {
-          winner !== null && (
-            <section className='winner'>
-              <div className='text'>
-                <h2>
-                  {
-                    winner === false
-                      ? 'Empate'
-                      : 'Ganó:'
-                  }
-                </h2>
+      {
+        winner !== null && (
+          <section className='winner'>
+            <div className='text'>
+              <h2>
+                {
+                  winner === false
+                    ? 'Empate'
+                    : 'Ganó:'
+                }
+              </h2>
 
-                <header className='win'>
-                  {winner && <Square>{winner}</Square>}
-                </header>
+              <header className='win'>
+                {winner && <Square>{winner}</Square>}
+              </header>
 
-                <footer>
-                  <button onClick={resetGame}>Empezar de nuevo</button>
-                </footer>
-              </div>
-            </section>
-          )
-        }
+              <footer>
+                <button onClick={resetGame}>Empezar de nuevo</button>
+              </footer>
+            </div>
+          </section>
+        )
+      }
     </main>
   )
 }
