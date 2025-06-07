@@ -2,27 +2,13 @@ import { useState } from 'react'
 import './App.css'
 import confetti from "canvas-confetti"
 import { Square } from './components/Square.jsx'
-import { TURNS, WINNER_COMBOS } from './constants.js'
+import { TURNS } from './constants.js'
+import { checkWinnerFrom } from './logic/board.js'
 
 function App() {
   const [board, setBoard] = useState(Array(9).fill(null))
   const [turn, setTurn] = useState(TURNS.X)
   const [winner, setWinner] = useState(null) //null es que no hay ganador y false es que hay un empate
-
-  const checkWinner = (boardToCheck) => {
-    for (const combo of WINNER_COMBOS) {
-      const [a, b, c] = combo
-      if (
-        boardToCheck[a] &&
-        boardToCheck[a] === boardToCheck[b] &&
-        boardToCheck[a] === boardToCheck[c]
-      ) {
-        console.log(boardToCheck[a])
-        return boardToCheck[a]
-      }
-    }
-    return null
-  }
 
   const resetGame = () => {
     setBoard(Array(9).fill(null))
@@ -45,7 +31,7 @@ function App() {
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
 
-    const newWinner = checkWinner(newBoard)
+    const newWinner = checkWinnerFrom(newBoard)
     if (newWinner) {
       confetti()
       setWinner(newWinner)
