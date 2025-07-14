@@ -13,6 +13,10 @@ function App () {
     if (enabled) {
       window.addEventListener('pointermove', handleMove)
     }
+
+    return () => {
+      window.removeEventListener('pointermove', handleMove)
+    }
   }, [enabled])
 
   return (
