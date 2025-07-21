@@ -7,13 +7,17 @@ export function App () {
   const [fact, setFact] = useState()
   const [imgUrl, setImgUrl] = useState('')
 
-  useEffect(() => {
+  const getRandomFact = () => {
     fetch(CAT_ENDOPOINT_RANDOM_FACT_URL)
       .then(res => res.json())
       .then(data => {
         const { fact } = data
         setFact(fact)
       })
+  }
+
+  useEffect(() => {
+    getRandomFact()
   }, [])
 
   useEffect(() => {
@@ -28,12 +32,7 @@ export function App () {
   }, [fact])
 
   const handleClick = () => {
-    fetch(CAT_ENDOPOINT_RANDOM_FACT_URL)
-      .then(res => res.json())
-      .then(data => {
-        const { fact } = data
-        setFact(fact)
-      })
+    getRandomFact()
   }
 
   return (
