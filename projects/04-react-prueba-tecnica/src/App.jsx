@@ -27,13 +27,24 @@ export function App () {
       })
   }, [fact])
 
+  const handleClick = () => {
+    fetch(CAT_ENDOPOINT_RANDOM_FACT_URL)
+      .then(res => res.json())
+      .then(data => {
+        const { fact } = data
+        setFact(fact)
+      })
+  }
+
   return (
     <main>
       <h1>App de gatitos cute</h1>
-      <section>
-        <p>{fact}</p>
-        {imgUrl && <img src={`${imgUrl}`} alt={`Image extracted using the first three words of the fact: ${fact}`} />}
-      </section>
+
+      <button onClick={handleClick}>Get new fact :D</button>
+
+      <p>{fact}</p>
+      {imgUrl && <img src={`${imgUrl}`} alt={`Image extracted using the first three words of the fact: ${fact}`} />}
+
     </main>
   )
 }

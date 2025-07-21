@@ -8,7 +8,11 @@ main {
     font-family: system-ui;
 }
 
-section {
+main img {
+    max-width: 640px;
+    max-height: auto;
+}
+/* section {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,4 +23,4 @@ section {
 section img {
     max-width: 320px;
     max-height: auto;
-}
+} */
