@@ -9,7 +9,7 @@ export function App () {
   const [imgUrl, setImgUrl] = useState()
 
   useEffect(() => {
-    getRandomFact().then(newFact => setFact(setFact))
+    getRandomFact().then(newFact => setFact(newFact))
   }, [])
 
   useEffect(() => {
@@ -38,5 +38,6 @@ export function App () {
       {imgUrl && <img src={`${imgUrl}`} alt={`Image extracted using the first three words of the fact: ${fact}`} />}
 
     </main>
+
   )
 }
