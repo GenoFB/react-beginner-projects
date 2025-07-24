@@ -1,10 +1,9 @@
-import positiveResults from './mocks/positive-results.json'
-import negativeResults from './mocks/negative-results.json'
 import { Movies } from './components/Movies'
+import { useMovies } from './hooks/useMovies'
 import './App.css'
 
 function App () {
-  const movies = positiveResults.Search
+  const { mappedMovies } = useMovies()
 
   return (
     <div className='page'>
@@ -17,7 +16,7 @@ function App () {
       </header>
 
       <main>
-        <Movies movies={movies} />
+        <Movies movies={mappedMovies} />
       </main>
     </div>
   )
