@@ -1,6 +1,6 @@
 # My React Mini-Apps Collection
 
-Welcome to my GitHub repository, a growing collection of small React projects designed to practice key concepts and patterns. Each folder contains an independent app with its own README detailing setup, usage, and insights.
+Welcome to my GitHub repository, a growing collection of small React projects designed to practice key concepts and patterns. Each folder contains an independent app.
 
 ---
 
@@ -30,5 +30,14 @@ Welcome to my GitHub repository, a growing collection of small React projects de
 ### 04-react-prueba-tecnica  
 ![Cat Fact & Cat Image Demo](projects/assets/04.gif)
 
-### 05-react-buscador-peliculas  
-![Movie Search Demo (In Progress)](projects/assets/05.png)
+### 05-react-buscador-peliculas (In Progress)
+![Movie Search Demo](projects/assets/05.png)
+
+---
+
+## 🙏 Acknowledgments
+
+Huge thanks to [Midudev](https://www.youtube.com/@midudev) for all his knowledge and support to the community:
+
+- YouTube: https://www.youtube.com/@midudev  
+- LinkedIn: https://www.linkedin.com/in/midudev/
